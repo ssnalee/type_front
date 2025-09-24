@@ -1,0 +1,7 @@
+@import "@/assets/scss/comn/mixin";
+
+@include nav_pc {
+    .tab_cat_02{
+        display: none;
+    }
+}
