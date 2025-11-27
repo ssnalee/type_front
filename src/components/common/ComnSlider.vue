@@ -2,10 +2,10 @@
   <div v-if="props.flag == 1">
     <Carousel v-bind="setting" :breakpoints="breakpoints">
       <Slide class="" v-for="(slide,idx) in transformSliderData" :key="idx">
-        <div class="carousel__item">
+        <div class="carousel__item" @click="navigateToProduct(slide.product_id)" :style="{cursor:'pointer'}">
           <img v-lazy="slide.image || ''" :alt="slide.name" class="slide_img" />
           <div>
-            <p>{{ slide.name || slide.product_name }}</p>
+            <p class="fs-15">{{ slide.name || slide.product_name }}</p>
           <p class="fs-15 mt-10">{{ slide.count }} 개</p>
           </div>
 
@@ -17,7 +17,6 @@
     </Carousel>
   </div>
 
-<!-- 여기꺼 배열 바꿔야대 .image로 넣을 수있게 -->
   <div v-if="props.flag == 2" class="slider_area">
     <Carousel v-bind="settings" :wrapAround="lenChk" :mouseDrag="lenChk" :touchDrag="lenChk">
       <!-- -->
@@ -48,7 +47,6 @@
       </template>
     </Carousel>
   </div>
-  <!-- 여기꺼 배열 바꿔야대 .image로 넣을 수있게 -->
   <div v-if="props.flag == 4">
     <Carousel v-bind="settingmain">
       <Slide class="" v-for="(slide,idx) in transformSliderData" :key="idx">
@@ -71,15 +69,15 @@
 <script setup lang="ts">
 import { IImage } from "@/types";
 import { computed, defineProps } from "vue";
+import { useRouter } from "vue-router";
 import { Carousel, Slide, Navigation, Pagination } from "vue3-carousel";
-
-
 import "vue3-carousel/dist/carousel.css";
 const props = defineProps<{
   sliderData: IImage[];
   flag: number;
 }>();
 
+const router = useRouter();
 
 const transformSliderData = computed<IImage[]>(()=>{
   return props.sliderData.map((item)=>({
@@ -93,6 +91,7 @@ const transformSliderData = computed<IImage[]>(()=>{
 const lenChk = computed(() => {
   return transformSliderData.value.length > 1 ? true : false;
 });
+
 // const customStyle = (bg) =>{
 //   return {'--bg' : bg};
 // }
@@ -130,6 +129,10 @@ const breakpoints = {
     snapAlign: "start",
   },
 };
+
+const navigateToProduct = (id : number | undefined) => {
+  router.push(`/products/detail/${id}`);
+}
 </script>
 
 <style>

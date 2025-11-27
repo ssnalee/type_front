@@ -166,10 +166,8 @@ const uploadProduct = async () => {
     try {
         if (product_id.value && product_id.value !== "create") {
             const updatedData = {
-                updated_product: {
-                    ...product,
-                    image: imageUrls.value,
-                } as IProductResult,
+                ...product,
+                image: imageUrls.value,
             };
             const result = await productApi.editProduct(Number(product_id.value), updatedData);
             if (result) {
@@ -179,12 +177,10 @@ const uploadProduct = async () => {
             }
         } else {
             const createData = {
-                product_create: {
-                    ...product,
-                    image: imageUrls.value,
-                } as IProductResult,
+                ...product,
+                image: imageUrls.value,
             };
-            const result = await productApi.postProduct(user_id.value,createData);
+            const result = await productApi.postProduct(createData);
             if (result) {
                 dialog.content = "성공적으로 등록되었습니다.";
                 dialog.isVisible = true;

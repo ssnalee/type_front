@@ -1,4 +1,4 @@
-import { IPostProduct, IProductResult, IProductsResult } from "@/types/product";
+import { IProductResult, IProductsResult } from "@/types/product";
 import { API } from "./apiAuth";
 // import { ApiResponse } from "@/types/api";
 
@@ -33,9 +33,9 @@ const viewIndividualProduct = async (product_id : string) : Promise<IProductResu
 };
 
 // 상품 등록 api 호출
-const postProduct = async (user_id : string, productData : IPostProduct) => {
+const postProduct = async ( productData : IProductResult) => {
   try {
-    const response = await API.post(`product/?product_id=${user_id}`, productData);
+    const response = await API.post(`product/`, productData);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -43,7 +43,7 @@ const postProduct = async (user_id : string, productData : IPostProduct) => {
 };
 
 // 상품 수정 api 호출
-const editProduct = async (product_id : number, productData : IPostProduct) => {
+const editProduct = async (product_id : number, productData : IProductResult) => {
   try {
     const response = await API.put(`product/${product_id}`, productData);
     return response.data;

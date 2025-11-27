@@ -9,10 +9,16 @@ declare module "*.vue" {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
+
+
 declare module 'vue3-carousel' {
-  import { DefineComponent } from 'vue';
   const Carousel: DefineComponent<any, any, any>;
   const Slide: DefineComponent<any, any, any>;
+
+  export interface CarouselSlots {
+    addons?: any; // 여기서 addons 슬롯 타입 선언
+  }
+
   export { Carousel, Slide };
 }
 declare module "*.png" {

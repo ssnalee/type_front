@@ -15,7 +15,7 @@ export interface IProductsResult {
 }
 
 export interface IProductResult {
-    image: [],
+    image: string[],
     animal_category: string,
     category: string,
     user_name?: string,
@@ -25,9 +25,3 @@ export interface IProductResult {
     count? : number,
     is_cart? : boolean,
 }
-
-export interface IPostProduct {
-    product_create? : IProductResult;
-    updated_product? : IProductResult;
-  }
-  

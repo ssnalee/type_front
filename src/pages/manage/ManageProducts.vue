@@ -54,6 +54,7 @@ const currentPage = ref(1); //현재 페이지 번호
 const postsperPage = 10; //한 페이지에 보여줄 게시글 갯수
 const isAdmin = computed(() => getItemWithExpireTime("userInfoObj")?.is_admin);
 const username = computed(() => getItemWithExpireTime("userInfoObj")?.username);
+const userId = computed(() => getItemWithExpireTime("userInfoObj")?.user_id);
 const totalPages = computed(() => {
     //총 페이지 수
     return Math.ceil(list.value.length / postsperPage);
@@ -70,13 +71,9 @@ const displayedPosts = computed<IProductsResult[]>(() => {
 //상품 정보 전체 조회 api 호출
 const getAllProduct = async (): Promise<void> => {
     try {
-        const result: IProductsResult[] = await productApi.viewAllProduct(null);
-        if (isAdmin.value) {
-            list.value = sortData(result);
-        } else {
-            list.value = result.filter(item => { username.value == item.user_name });
-        }
-
+        const id = isAdmin.value ? null : userId.value;
+        const result: IProductsResult[] = await productApi.viewAllProduct(id);
+        list.value = sortData(result);
     } catch (error) {
         console.error(error);
     }

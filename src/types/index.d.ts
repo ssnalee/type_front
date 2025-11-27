@@ -18,6 +18,7 @@ export interface IImage{
   backgroundImage? : string,
   color? : string,
   image? : string,
+  product_id? : number,
   product_image? : string,
   product_name? : string,
   name? : string,

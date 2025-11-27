@@ -201,8 +201,26 @@ button.confirm_btn {
 }
 .fade-enter-to {
   opacity: 1;
-  transition: all 0.5s linear;
+  transition: all 0.25s linear;
   transform: translateY(0);
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.25s ease;
+  opacity: 1;
+}
+
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.fade-slide-enter-to,
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0px);
 }
 /* table------------------------------------------------------*/
 .table {

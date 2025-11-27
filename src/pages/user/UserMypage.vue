@@ -33,10 +33,10 @@
         <div class="title_s pd-10">
           <img src="@/assets/img/purchase_icon.png" alt="구매내역" />
           <h4 class="fs-18 mlr-10">구매내역</h4>
-          <button @click="isBetaHandler" class="fb" v-if="basketInfo.length > 0">더 보기 +</button>
+          <button @click="isBetaHandler" class="fb" v-if="purchaseList.length > 0">더 보기 +</button>
         </div>
-        <SliderView :flag="flag" :sliderData="purchaseData"  v-if="basketInfo.length > 0"/>
-        <ComnNodata class="pd-30" :list="basketInfo" content="지금 당장 구매해보세요!" />
+        <SliderView :flag="flag" :sliderData="purchaseData"  v-if="purchaseList.length > 0"/>
+        <ComnNodata class="pd-30" :list="purchaseList" content="지금 당장 구매해보세요!" />
       </div>
     </div>
     <div class="graient-line"></div>
@@ -117,6 +117,7 @@ const dialog = ref({
 })
 const data = ref<IExtendInfo | null>(null);
 const flag = 1; // slider type
+const purchaseList = ref([]);
 const purchaseData  : IPurchaseData[] = [
   {
     id: 1,

@@ -1,6 +1,6 @@
 // ******************* 회원가입 *******************
 .user_wrap {
-  min-height: 40vh;
+  height: calc(100vh - 330px);
   display: flex;
   flex-direction: column;
   align-items: center;
