@@ -2,7 +2,11 @@ export interface IJoinInfo {
   password: string,
   password_check: string,
   username: string,
+  nickname: string,
   email: string,
+  is_admin : boolean,
+  is_seller : boolean,
+  is_active : boolean,
 }
 
 export interface ILoginInfo {

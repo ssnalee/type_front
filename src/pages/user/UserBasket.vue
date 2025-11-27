@@ -37,7 +37,6 @@
           <td>{{ commonNumber(item.price) }}<span>원</span></td>
           <td>
             <div class="cell flex_center row">
-              <span class="mr-20">수량</span>
               <button
                 type="button"
                 @click.stop="item.count !== 1 && putBasketView(item.count - 1, item.id)"

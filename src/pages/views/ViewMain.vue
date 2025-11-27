@@ -84,7 +84,7 @@ const isLogin = computed(() => {
   else return false;
 });
 const fetchAllProducts = async () => {
-  const result = await productApi.viewAllProduct(0);
+  const result = await productApi.viewAllProduct(null);
   const topList = result.slice(0, 5);
   productList.value = topList.map((item) => ({
     price: item.price,

@@ -78,7 +78,7 @@ const sortProducts = async (): Promise<void> => {
     }
 };
 const fetchAllProducts = async () => {
-    result.value = await productApi.viewAllProduct(userId.value);
+    result.value = await productApi.viewAllProduct(null);
     await sortProducts();
 }
 watch(currentId, ()=>{

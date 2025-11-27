@@ -29,7 +29,8 @@ const selectJoinFlag = (flag) => {
 
 <style lang="scss" scoped>
 .select_wrap ul{
-    height: 50vh;
+    /* height: 50vh; */
+    height: calc(100vh - 330px);
     flex-direction: row;
     li{
         img{
